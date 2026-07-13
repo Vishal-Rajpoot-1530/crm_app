@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+class DashboardGridScreen extends StatelessWidget {
+  const DashboardGridScreen({super.key});
 
   static const bg = Color(0xFF0A0F1E);
   static const textSecondary = Color(0xFF9599B3);
