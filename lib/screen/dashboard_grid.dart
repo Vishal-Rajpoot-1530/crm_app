@@ -1,3 +1,4 @@
+import 'package:crm_app/screen/team_management.dart';
 import 'package:flutter/material.dart';
 
 class DashboardGridScreen extends StatelessWidget {
@@ -359,6 +360,7 @@ class DashboardGridScreen extends StatelessWidget {
         title: 'Employees',
         desc: 'HR, payroll, and internal...',
         borderColor: const Color(0xFF2FAE82),
+        destination: const TeamDirectoryScreen(),
       ),
       _ModuleData(
         icon: Icons.bar_chart,
@@ -416,83 +418,94 @@ class DashboardGridScreen extends StatelessWidget {
         mainAxisSpacing: 14,
         childAspectRatio: 0.92,
       ),
-      itemBuilder: (context, index) => _moduleCard(modules[index]),
+      itemBuilder: (context, index) => _moduleCard(context, modules[index]),
     );
   }
 
-  Widget _moduleCard(_ModuleData m) {
-    return Container(
-      padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1A2437),
-        borderRadius: BorderRadius.circular(18),
-        border: Border(
-          left: BorderSide(color: m.borderColor, width: 4),
-          top: BorderSide(color: m.borderColor, width: .5),
-          right: BorderSide(color: m.borderColor, width: .5),
-          bottom: BorderSide(color: m.borderColor, width: .5),
+  Widget _moduleCard(BuildContext context, _ModuleData m) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(18),
+      onTap: () {
+        if (m.destination != null) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => m.destination!),
+          );
+        }
+      },
+      child: Container(
+        padding: const EdgeInsets.all(18),
+        decoration: BoxDecoration(
+          color: const Color(0xFF1A2437),
+          borderRadius: BorderRadius.circular(18),
+          border: Border(
+            left: BorderSide(color: m.borderColor, width: 4),
+            top: BorderSide(color: m.borderColor, width: .5),
+            right: BorderSide(color: m.borderColor, width: .5),
+            bottom: BorderSide(color: m.borderColor, width: .5),
+          ),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                width: 42,
-                height: 42,
-                decoration: BoxDecoration(
-                  color: m.iconBg,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: m.icon != null
-                    ? Icon(m.icon, color: m.iconColor, size: 19)
-                    : null,
-              ),
-              Flexible(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 4,
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  width: 42,
+                  height: 42,
                   decoration: BoxDecoration(
-                    color: m.countBg,
+                    color: m.iconBg,
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Text(
-                    m.count,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.bold,
-                      color: m.countColor,
+                  child: m.icon != null
+                      ? Icon(m.icon, color: m.iconColor, size: 19)
+                      : null,
+                ),
+                Flexible(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
+                    decoration: BoxDecoration(
+                      color: m.countBg,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      m.count,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: m.countColor,
+                      ),
                     ),
                   ),
                 ),
+              ],
+            ),
+            const Spacer(),
+            Text(
+              m.title,
+              style: const TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
-            ],
-          ),
-          const Spacer(),
-          Text(
-            m.title,
-            style: const TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
             ),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            m.desc,
-            style: const TextStyle(
-              fontSize: 13,
-              color: textSecondary,
-              height: 1.3,
+            const SizedBox(height: 6),
+            Text(
+              m.desc,
+              style: const TextStyle(
+                fontSize: 13,
+                color: textSecondary,
+                height: 1.3,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -644,12 +657,12 @@ class DashboardGridScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Positioned(
-                left: 0,
-                top: 0,
-                bottom: 0,
-                child: Container(width: 4, color: a.dotColor),
-              ),
+              // Positioned(
+              //   left: 0,
+              //   top: 0,
+              //   bottom: 0,
+              //   child: Container(width: 4, color: a.dotColor),
+              // ),
             ],
           ),
         ),
@@ -694,6 +707,7 @@ class _ModuleData {
   final String title;
   final String desc;
   final Color borderColor;
+  final Widget? destination;
 
   _ModuleData({
     required this.icon,
@@ -705,6 +719,7 @@ class _ModuleData {
     required this.title,
     required this.desc,
     required this.borderColor,
+    this.destination,
   });
 }
 

@@ -16,7 +16,7 @@ class CRMApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xFF0A0F1E),
         fontFamily: 'Roboto',
       ),
-      home: const DashboardScreen(),
+      home: const DashboardGridScreen(),
     );
   }
 }

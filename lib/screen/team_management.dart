@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// ---------------------------------------------------------------------------
-/// Vibrant CRM - Team Directory Screen
-///
-/// Drop this file into your `lib/screens/` folder and push it like:
-///   Navigator.push(context, MaterialPageRoute(builder: (_) => const TeamDirectoryScreen()));
-///
-/// No external packages required - pure Flutter/Material.
-/// ---------------------------------------------------------------------------
-
 class AppColors {
   static const bg = Color(0xFF0A0E1A);
   static const card = Color(0xFFFFFFFF);
@@ -183,7 +174,7 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
         onPressed: () {},
         child: const Icon(Icons.add, color: Colors.white),
       ),
-      bottomNavigationBar: _buildBottomNav(),
+      // bottomNavigationBar: _buildBottomNav(),
     );
   }
 
@@ -216,8 +207,10 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
           alignment: Alignment.center,
           children: [
             IconButton(
-              icon: const Icon(Icons.notifications_none_rounded,
-                  color: Colors.white),
+              icon: const Icon(
+                Icons.notifications_none_rounded,
+                color: Colors.white,
+              ),
               onPressed: () {},
             ),
             Positioned(
@@ -290,18 +283,24 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label,
-              style: const TextStyle(
-                  color: AppColors.textGrey,
-                  fontSize: 10.5,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.6)),
+          Text(
+            label,
+            style: const TextStyle(
+              color: AppColors.textGrey,
+              fontSize: 10.5,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.6,
+            ),
+          ),
           const SizedBox(height: 6),
-          Text(value,
-              style: TextStyle(
-                  color: valueColor,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w800)),
+          Text(
+            value,
+            style: TextStyle(
+              color: valueColor,
+              fontSize: 22,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
         ],
       ),
     );
@@ -356,9 +355,10 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
                 color: isActive ? AppColors.purple : AppColors.chipBg,
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                    color: isActive
-                        ? Colors.transparent
-                        : const Color(0x1FFFFFFF)),
+                  color: isActive
+                      ? Colors.transparent
+                      : const Color(0x1FFFFFFF),
+                ),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -415,9 +415,10 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
                 child: Text(
                   m.name.trim().split(' ').map((e) => e[0]).take(2).join(),
                   style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 15),
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                  ),
                 ),
               ),
               const SizedBox(width: 12),
@@ -425,17 +426,23 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(m.name,
-                        style: const TextStyle(
-                            color: AppColors.textDark,
-                            fontSize: 15.5,
-                            fontWeight: FontWeight.w700)),
+                    Text(
+                      m.name,
+                      style: const TextStyle(
+                        color: AppColors.textDark,
+                        fontSize: 15.5,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                     const SizedBox(height: 2),
-                    Text(m.role,
-                        style: const TextStyle(
-                            color: AppColors.purple,
-                            fontSize: 12.5,
-                            fontWeight: FontWeight.w500)),
+                    Text(
+                      m.role,
+                      style: const TextStyle(
+                        color: AppColors.purple,
+                        fontSize: 12.5,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -443,10 +450,7 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
             ],
           ),
           const SizedBox(height: 12),
-          Wrap(
-            spacing: 8,
-            children: m.tags.map((t) => _tagChip(t)).toList(),
-          ),
+          Wrap(spacing: 8, children: m.tags.map((t) => _tagChip(t)).toList()),
           const SizedBox(height: 12),
           const Divider(height: 1, color: Color(0xFFEDEEF2)),
           const SizedBox(height: 10),
@@ -457,14 +461,21 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
               else ...[
                 Icon(m.footerIcon, size: 15, color: AppColors.textGrey),
                 const SizedBox(width: 6),
-                Text(m.footerText,
-                    style: const TextStyle(
-                        color: AppColors.textGrey,
-                        fontSize: 12.5,
-                        fontWeight: FontWeight.w500)),
+                Text(
+                  m.footerText,
+                  style: const TextStyle(
+                    color: AppColors.textGrey,
+                    fontSize: 12.5,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ],
               const Spacer(),
-              const Icon(Icons.chevron_right, color: AppColors.textGrey, size: 20),
+              const Icon(
+                Icons.chevron_right,
+                color: AppColors.textGrey,
+                size: 20,
+              ),
             ],
           ),
         ],
@@ -498,11 +509,14 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
         color: AppColors.tagBg,
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Text(label,
-          style: const TextStyle(
-              color: AppColors.tagText,
-              fontSize: 11.5,
-              fontWeight: FontWeight.w600)),
+      child: Text(
+        label,
+        style: const TextStyle(
+          color: AppColors.tagText,
+          fontSize: 11.5,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     );
   }
 
@@ -539,7 +553,10 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-            color: const Color(0x33FFFFFF), style: BorderStyle.solid, width: 1.4),
+          color: const Color(0x33FFFFFF),
+          style: BorderStyle.solid,
+          width: 1.4,
+        ),
       ),
       child: Column(
         children: [
@@ -550,14 +567,20 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
               color: AppColors.purple,
               shape: BoxShape.circle,
             ),
-            child: const Icon(Icons.person_add_alt_1,
-                color: Colors.white, size: 20),
+            child: const Icon(
+              Icons.person_add_alt_1,
+              color: Colors.white,
+              size: 20,
+            ),
           ),
           const SizedBox(height: 12),
           const Text(
             'Add Member',
             style: TextStyle(
-                color: Colors.white, fontSize: 15, fontWeight: FontWeight.w700),
+              color: Colors.white,
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+            ),
           ),
           const SizedBox(height: 4),
           const Text(
@@ -572,65 +595,65 @@ class _TeamDirectoryScreenState extends State<TeamDirectoryScreen> {
   // ---------------------------------------------------------------------
   // BOTTOM NAV
   // ---------------------------------------------------------------------
-  Widget _buildBottomNav() {
-    final items = [
-      (Icons.dashboard_outlined, 'Dashboard'),
-      (Icons.groups_outlined, 'Team'),
-      (Icons.check_box_outlined, 'Tasks'),
-      (Icons.calendar_today_outlined, 'Schedule'),
-      (Icons.person_outline, 'Profile'),
-    ];
+  // Widget _buildBottomNav() {
+  //   final items = [
+  //     (Icons.dashboard_outlined, 'Dashboard'),
+  //     (Icons.groups_outlined, 'Team'),
+  //     (Icons.check_box_outlined, 'Tasks'),
+  //     (Icons.calendar_today_outlined, 'Schedule'),
+  //     (Icons.person_outline, 'Profile'),
+  //   ];
 
-    return Container(
-      decoration: const BoxDecoration(
-        color: AppColors.bg,
-        border: Border(top: BorderSide(color: Color(0x1FFFFFFF))),
-      ),
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: SafeArea(
-        top: false,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(items.length, (i) {
-            final isActive = i == _navIndex;
-            final (icon, label) = items[i];
-            return GestureDetector(
-              onTap: () => setState(() => _navIndex = i),
-              child: isActive
-                  ? Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 14, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: AppColors.purple,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(icon, color: Colors.white, size: 20),
-                          const SizedBox(height: 2),
-                          Text(label,
-                              style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w600)),
-                        ],
-                      ),
-                    )
-                  : Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(icon, color: AppColors.textGrey, size: 20),
-                        const SizedBox(height: 4),
-                        Text(label,
-                            style: const TextStyle(
-                                color: AppColors.textGrey, fontSize: 10)),
-                      ],
-                    ),
-            );
-          }),
-        ),
-      ),
-    );
-  }
+  //   return Container(
+  //     decoration: const BoxDecoration(
+  //       color: AppColors.bg,
+  //       border: Border(top: BorderSide(color: Color(0x1FFFFFFF))),
+  //     ),
+  //     padding: const EdgeInsets.symmetric(vertical: 8),
+  //     child: SafeArea(
+  //       top: false,
+  //       child: Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //         children: List.generate(items.length, (i) {
+  //           final isActive = i == _navIndex;
+  //           final (icon, label) = items[i];
+  //           return GestureDetector(
+  //             onTap: () => setState(() => _navIndex = i),
+  //             child: isActive
+  //                 ? Container(
+  //                     padding: const EdgeInsets.symmetric(
+  //                         horizontal: 14, vertical: 6),
+  //                     decoration: BoxDecoration(
+  //                       color: AppColors.purple,
+  //                       borderRadius: BorderRadius.circular(12),
+  //                     ),
+  //                     child: Column(
+  //                       mainAxisSize: MainAxisSize.min,
+  //                       children: [
+  //                         Icon(icon, color: Colors.white, size: 20),
+  //                         const SizedBox(height: 2),
+  //                         Text(label,
+  //                             style: const TextStyle(
+  //                                 color: Colors.white,
+  //                                 fontSize: 10,
+  //                                 fontWeight: FontWeight.w600)),
+  //                       ],
+  //                     ),
+  //                   )
+  //                 : Column(
+  //                     mainAxisSize: MainAxisSize.min,
+  //                     children: [
+  //                       Icon(icon, color: AppColors.textGrey, size: 20),
+  //                       const SizedBox(height: 4),
+  //                       Text(label,
+  //                           style: const TextStyle(
+  //                               color: AppColors.textGrey, fontSize: 10)),
+  //                     ],
+  //                   ),
+  //           );
+  //         }),
+  //       ),
+  //     ),
+  //   );
+  // }
 }
